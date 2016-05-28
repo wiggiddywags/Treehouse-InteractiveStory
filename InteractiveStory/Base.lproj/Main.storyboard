@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="1172" y="374"/>
         </scene>
-        <!--View Controller-->
+        <!--Page Controller-->
         <scene sceneID="2tV-pP-DJV">
             <objects>
-                <viewController id="eP7-fJ-yW5" sceneMemberID="viewController">
+                <viewController id="eP7-fJ-yW5" customClass="PageController" customModule="InteractiveStory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rug-rH-UXd"/>
                         <viewControllerLayoutGuide type="bottom" id="KRs-Eq-X4h"/>
