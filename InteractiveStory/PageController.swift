@@ -32,7 +32,15 @@ class PageController: UIViewController {
         
         if let page = page {
             artwork.image = page.story.artwork
-            storyLabel.text = page.story.text
+            
+            let attributedString = NSMutableAttributedString(string: page.story.text)
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 10
+            
+            attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+            
+            storyLabel.attributedText = attributedString
         }
     }
 
@@ -60,7 +68,7 @@ class PageController: UIViewController {
         NSLayoutConstraint.activateConstraints([
                 storyLabel.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 16.0),
                 storyLabel.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -16.0),
-                storyLabel.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: -48.0)
+                storyLabel.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: 48.0)
             ])
         
     }
