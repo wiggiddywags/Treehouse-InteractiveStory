@@ -32,7 +32,7 @@ class PageController: UIViewController {
         
         if let page = page {
             artwork.image = page.story.artwork
-            //storyLabel.text = page.story.text
+            storyLabel.text = page.story.text
         }
     }
 
@@ -53,5 +53,15 @@ class PageController: UIViewController {
                 artwork.leftAnchor.constraintEqualToAnchor(view.leftAnchor)
             ])
         
-            }
+        view.addSubview(storyLabel)
+        storyLabel.translatesAutoresizingMaskIntoConstraints = false
+        storyLabel.numberOfLines = 0 //letting story label figure how many lines we need
+        
+        NSLayoutConstraint.activateConstraints([
+                storyLabel.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 16.0),
+                storyLabel.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -16.0),
+                storyLabel.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: -48.0)
+            ])
+        
+    }
 }
