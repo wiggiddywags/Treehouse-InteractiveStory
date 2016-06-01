@@ -52,7 +52,7 @@ class PageController: UIViewController {
             
             
             if let secondChoice = page.secondChoice {
-                secondChoiceBtn.setTitle(secodChoice.title, forState: .Normal)
+                secondChoiceBtn.setTitle(secondChoice.title, forState: .Normal)
             }
         }
     }
