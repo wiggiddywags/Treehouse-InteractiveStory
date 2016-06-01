@@ -41,6 +41,19 @@ class PageController: UIViewController {
             attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
             
             storyLabel.attributedText = attributedString
+            
+            //if the firstChoice exists..
+            if let firstChoice = page.firstChoice {
+                firstChoiceBtn.setTitle(firstChoice.title, forState: .Normal)
+                
+            } else {
+                firstChoiceBtn.setTitle("Play Again", forState: .Normal)
+            }
+            
+            
+            if let secondChoice = page.secondChoice {
+                secondChoiceBtn.setTitle(secodChoice.title, forState: .Normal)
+            }
         }
     }
 
@@ -69,6 +82,20 @@ class PageController: UIViewController {
                 storyLabel.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 16.0),
                 storyLabel.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: -16.0),
                 storyLabel.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: 48.0)
+            ])
+        
+        view.addSubview(firstChoiceBtn)
+        firstChoiceBtn.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            firstChoiceBtn.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
+            firstChoiceBtn.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -80.0)
+            ])
+        
+        view.addSubview(secondChoiceBtn)
+        secondChoiceBtn.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            secondChoiceBtn.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
+            secondChoiceBtn.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -32)
             ])
         
     }
