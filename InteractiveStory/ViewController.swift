@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
     
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
        
     }
 
@@ -65,12 +66,28 @@ class ViewController: UIViewController {
                 self.textFieldBottomConstraint.constant = keyboardFrame.size.height + 10
                 self.view.layoutIfNeeded()
             }
+            
         }
         
     }
     
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animateWithDuration(0.8) {
+            self.textFieldBottomConstraint.constant = 40.0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 
